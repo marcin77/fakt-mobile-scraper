@@ -1,5 +1,8 @@
 # 📱 Fakt Mobile Code Scraper
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://python.org)
+
 Monitoruje forum [telepolis.pl](https://www.telepolis.pl/forum/viewtopic.php?f=76&t=82383)
 i wysyła nowe kody Fakt Mobile na Telegram.
 
@@ -37,7 +40,7 @@ nano config.py  # uzupełnij token i chat_id
 # Jednorazowe sprawdzenie
 python3 scraper.py --once
 
-# Ciągłe monitorowanie (co 5 min)
+# Ciągłe monitorowanie (co 6 godzin)
 python3 scraper.py
 ```
 
@@ -51,15 +54,18 @@ crontab -e
 0 6,12,18 * * * cd /root/fakt && /usr/bin/python3 scraper.py --once >> /root/fakt/cron.log 2>&1
 ```
 
-## Jak działa
+
+
+### Jak działa
 
 1. Pobiera najnowszą stronę wątku na forum
-2. Szuka kodów (4 wielkie litery) w kontekście słów kluczowych
+2. Szuka kodów w kontekście słów kluczowych
 3. Nowe kody wysyła na Telegram z przyciskiem kopiowania
 4. Zapisuje wysłane kody w SQLite żeby nie powtarzać
 
 
-## Przykład wiadomości
+
+### Przykład wiadomości
 
 ```text
 
